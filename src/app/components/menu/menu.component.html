@@ -1,0 +1,12 @@
+<div class="main-menu" [ngClass]="{ resize: !isHomeRoute }">
+  <dp-battle-command [routerLink]="['/digimon']" routerLinkActive="active">
+    <div class="logo-holder">
+      <img src="assets/images/digimon_logo.svg" alt="digimon_logo" />
+    </div>
+  </dp-battle-command>
+  <dp-battle-command [routerLink]="['/pokemon']" routerLinkActive="active">
+    <div class="logo-holder">
+      <img src="assets/images/pokemon_logo.svg" alt="pokemon_logo" />
+    </div>
+  </dp-battle-command>
+</div>

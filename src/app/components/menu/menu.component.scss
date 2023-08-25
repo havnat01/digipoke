@@ -1,0 +1,16 @@
+.logo-holder {
+  width: 200px;
+  img {
+    width: 100%;
+  }
+}
+.main-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100vh;
+  transition: all 0.2s ease-in-out;
+  //   &.resize {
+  //     height: 80px;
+  //   }
+}

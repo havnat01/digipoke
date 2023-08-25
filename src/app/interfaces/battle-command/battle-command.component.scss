@@ -1,0 +1,142 @@
+$transitionDelay: 0.2s;
+.battle-command {
+  position: relative;
+  width: max-content;
+  cursor: pointer;
+  perspective: 1000px;
+  transition: all 0.3s ease;
+  width: 300px;
+  height: 300px;
+
+  .battle-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+  }
+  .battle-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    opacity: 0;
+  }
+  .bg-circle {
+    width: 300px;
+    height: 300px;
+    background: url("/assets/images/ui_btlcommand2.png") no-repeat 0 0;
+    background-size: 200%;
+  }
+  //   .bg-circle-quarter {
+  //     position: absolute;
+  //     top: 50%;
+  //     left: 50%;
+  //     transform: translate(-50%, -50%);
+  //     pointer-events: none;
+
+  //     width: 150px;
+  //     height: 150px;
+  //     background: url("/assets/images/ui_btlcommand2.png") no-repeat 0 56%;
+  //     background-size: 200%;
+  //   }
+  .inside-circle {
+    width: 200px;
+    height: 200px;
+    background: url("/assets/images/ui_btlcommand2.png") no-repeat 77% 0;
+    background-size: 280%;
+    overflow: hidden;
+  }
+  .inside-circle-active {
+    opacity: 0;
+    width: 200px;
+    height: 200px;
+    background: url("/assets/images/ui_btlcommand2.png") no-repeat 77% 56%;
+    background-size: 280%;
+  }
+  .cube-circle {
+    width: 150px;
+    height: 150px;
+    background: url("/assets/images/ui_battle_eff0.png");
+    background-size: contain;
+    animation: infiniteZoom 2s linear infinite;
+  }
+}
+:host {
+  &.active {
+    .battle-circle {
+      opacity: 1;
+    }
+    .inside-circle {
+      opacity: 0.9;
+    }
+    .bg-circle,
+    .cube-circle {
+      opacity: 0.8;
+    }
+    .inside-circle-active {
+      animation: continuousFade 1s linear infinite;
+    }
+  }
+  &:hover {
+    .battle-circle {
+      opacity: 1;
+    }
+    .inside-circle {
+      opacity: 0.9;
+    }
+    .bg-circle,
+    .cube-circle {
+      opacity: 0.8;
+    }
+    .battle-command {
+      transition-delay: $transitionDelay;
+      transform: skew(0, -2deg) rotateY(-30deg);
+    }
+    .battle-content {
+      transition-delay: $transitionDelay;
+      transform: translate(-42%, -49%);
+    }
+    .inside-circle,
+    .inside-circle-active {
+      transition-delay: $transitionDelay;
+      transform: translate(-45%, -49%);
+    }
+  }
+}
+
+@keyframes continuousFade {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+@keyframes continuousRotate {
+  0% {
+    transform: rotate(0deg); /* Starting rotation angle */
+  }
+  100% {
+    transform: rotate(360deg); /* Ending rotation angle */
+  }
+}
+
+@keyframes infiniteZoom {
+  0% {
+    transform: translate(-50%, -50%) scale(2); /* Ending scale */
+    opacity: 0;
+  }
+  50% {
+    opacity: 100;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1); /* Starting scale */
+    opacity: 0;
+  }
+}
